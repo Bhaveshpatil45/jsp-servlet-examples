@@ -1,4 +1,4 @@
-package com.finance;
+package com.finance.web.servlet;
 
 /**
  * Hello world!
