@@ -4,13 +4,14 @@
     <title>Register</title>
 </head>
 <body>
-    <h2>Register</h2>
-    <form action="RegisterServlet" method="post">
-        <label>Username:</label>
-        <input type="text" name="username" required><br>
-        <label>Password:</label>
-        <input type="password" name="password" required><br>
-        <button type="submit">Register</button>
+    <h1>Register</h1>
+    <form action="register" method="POST">
+        Username: <input type="text" name="username" /><br>
+        Password: <input type="password" name="password" /><br>
+        <input type="submit" value="Register" />
     </form>
+    <c:if test="${param.error != null}">
+        <p style="color:red">Registration failed. Try again!</p>
+    </c:if>
 </body>
 </html>
