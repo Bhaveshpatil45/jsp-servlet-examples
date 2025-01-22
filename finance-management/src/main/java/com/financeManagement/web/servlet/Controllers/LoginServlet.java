@@ -1,9 +1,9 @@
 package com.financeManagement.web.servlet.Controllers;
 
 
-import com.finance.models.User;
-import com.finance.services.UserService;
-import com.finance.exceptions.UserNotFoundException;
+import com.financeManagement.web.servlet.models.User;
+import com.financeManagement.web.servlet.services.UserService;
+import com.financeManagement.web.servlet.exceptions.UserNotFoundException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

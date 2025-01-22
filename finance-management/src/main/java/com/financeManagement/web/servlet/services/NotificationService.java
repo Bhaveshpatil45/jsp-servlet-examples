@@ -1,8 +1,8 @@
 package com.financeManagement.web.servlet.services;
 
-import com.finance.models.Notification;
-import com.finance.models.User;
-import com.finance.exceptions.NotificationFailureException;
+import com.financeManagement.web.servlet.models.Notification;
+import com.financeManagement.web.servlet.models.User;
+import com.financeManagement.web.servlet.exceptions.NotificationFailureException;
 
 import java.util.ArrayList;
 import java.util.List;

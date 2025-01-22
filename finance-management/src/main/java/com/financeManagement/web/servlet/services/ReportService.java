@@ -1,7 +1,7 @@
 package com.financeManagement.web.servlet.services;
 
-import com.finance.models.Report;
-import com.finance.models.User;
+import com.financeManagement.web.servlet.models.Report;
+import com.financeManagement.web.servlet.models.User;
 
 public class ReportService {
 

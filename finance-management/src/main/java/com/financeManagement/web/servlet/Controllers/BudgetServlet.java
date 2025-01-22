@@ -1,9 +1,10 @@
 package com.financeManagement.web.servlet.Controllers;
 
 
-import com.finance.models.Budget;
-import com.finance.services.BudgetService;
-import com.finance.exceptions.BudgetExceededException;
+import com.financeManagement.web.servlet.models.Budget;
+import com.financeManagement.web.servlet.models.User;
+import com.financeManagement.web.servlet.services.BudgetService;
+import com.financeManagement.web.servlet.exceptions.BudgetExceededException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

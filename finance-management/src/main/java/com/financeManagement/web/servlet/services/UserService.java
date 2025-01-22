@@ -1,8 +1,8 @@
 package com.financeManagement.web.servlet.services;
 
-import com.finance.models.User;
-import com.finance.exceptions.UserAlreadyExistsException;
-import com.finance.exceptions.UserNotFoundException;
+import com.financeManagement.web.servlet.models.User;
+import com.financeManagement.web.servlet.exceptions.UserAlreadyExistsException;
+import com.financeManagement.web.servlet.exceptions.UserNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;

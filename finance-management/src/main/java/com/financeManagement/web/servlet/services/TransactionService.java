@@ -1,33 +1,22 @@
 package com.financeManagement.web.servlet.services;
 
-import com.finance.models.Transaction;
-import com.finance.exceptions.TransactionNotFoundException;
+import com.financeManagement.web.servlet.models.Transaction;
+import com.financeManagement.web.servlet.exceptions.TransactionNotFoundException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionService {
-    private static List<Transaction> transactions = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
 
-    public void addTransaction(Transaction transaction) {
+    public void addTransaction(Transaction transaction) throws TransactionNotFoundException {
+        if (transaction == null) {
+            throw new TransactionNotFoundException("Transaction cannot be null");
+        }
         transactions.add(transaction);
     }
 
-    public List<Transaction> getTransactionsByUser(int userId) {
-        List<Transaction> userTransactions = new ArrayList<>();
-        for (Transaction transaction : transactions) {
-            if (transaction.getUser().getId() == userId) {
-                userTransactions.add(transaction);
-            }
-        }
-        return userTransactions;
-    }
-
-    public Transaction getTransactionById(int transactionId) throws TransactionNotFoundException {
-        for (Transaction transaction : transactions) {
-            if (transaction.getId() == transactionId) {
-                return transaction;
-            }
-        }
-        throw new TransactionNotFoundException("Transaction not found.");
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 }

@@ -1,9 +1,9 @@
 package com.financeManagement.web.servlet.Controllers;
 
-import com.finance.models.Transaction;
-import com.finance.services.TransactionService;
-import com.finance.exceptions.TransactionNotFoundException;
-import com.finance.models.User;
+import com.financeManagement.web.servlet.models.Transaction;
+import com.financeManagement.web.servlet.services.TransactionService;
+import com.financeManagement.web.servlet.exceptions.TransactionNotFoundException;
+import com.financeManagement.web.servlet.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

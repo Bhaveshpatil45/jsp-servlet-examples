@@ -1,7 +1,7 @@
 package com.financeManagement.web.servlet.Controllers;
 
-import com.finance.services.ReportService;
-import com.finance.models.User;
+import com.financeManagement.web.servlet.services.ReportService;
+import com.financeManagement.web.servlet.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

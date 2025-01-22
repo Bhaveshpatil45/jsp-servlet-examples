@@ -5,7 +5,7 @@ import java.util.Date;
 public class Transaction {
     private int id;
     private double amount;
-    private String type; // Income or Expense
+    private String type;
     private String category;
     private Date date;
     private String description;
@@ -21,8 +21,7 @@ public class Transaction {
         this.user = user;
     }
 
-    // Getters and Setters
-
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -79,4 +78,3 @@ public class Transaction {
         this.user = user;
     }
 }
-

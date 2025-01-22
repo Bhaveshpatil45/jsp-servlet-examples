@@ -1,7 +1,7 @@
 package com.financeManagement.web.servlet.services;
 
-import com.finance.models.Budget;
-import com.finance.exceptions.BudgetExceededException;
+import com.financeManagement.web.servlet.models.Budget;
+import com.financeManagement.web.servlet.exceptions.BudgetExceededException;
 
 import java.util.HashMap;
 import java.util.Map;
