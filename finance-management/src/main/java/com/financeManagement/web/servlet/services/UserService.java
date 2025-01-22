@@ -1,42 +1,27 @@
 package com.financeManagement.web.servlet.services;
 
 import com.finance.models.User;
-import com.finance.utils.DatabaseUtil;
+import com.finance.exceptions.UserAlreadyExistsException;
+import com.finance.exceptions.UserNotFoundException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserService {
-    public User authenticate(String username, String password) throws Exception {
-        Connection conn = DatabaseUtil.getConnection();
-        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, username);
-        stmt.setString(2, password);
-        ResultSet rs = stmt.executeQuery();
+    private static Map<String, User> userDatabase = new HashMap<>();
 
-        if (rs.next()) {
-            return new User(
-                    rs.getInt("id"),
-                    rs.getString("username"),
-                    rs.getString("password"),
-                    null,
-                    "User",
-                    rs.getString("state")
-            );
-        } else {
-            throw new Exception("Invalid username or password");
+    public User authenticate(String username, String password) throws UserNotFoundException {
+        User user = userDatabase.get(username);
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
         }
+        throw new UserNotFoundException("Invalid username or password.");
     }
 
-    public void register(User user) throws Exception {
-        Connection conn = DatabaseUtil.getConnection();
-        String query = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, user.getUsername());
-        stmt.setString(2, user.getPassword());
-        stmt.setString(3, "test@example.com");
-        stmt.executeUpdate();
+    public void register(User user) throws UserAlreadyExistsException {
+        if (userDatabase.containsKey(user.getUsername())) {
+            throw new UserAlreadyExistsException("Username already exists.");
+        }
+        userDatabase.put(user.getUsername(), user);
     }
 }
