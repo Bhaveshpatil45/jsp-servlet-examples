@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="dashboard-container">
-        <h2>Welcome, ${user.username}!</h2>
+        <%
+            com.financeManagement.web.servlet.models.User user =
+                (com.financeManagement.web.servlet.models.User) session.getAttribute("user");
+        %>
+        <h2>Welcome, <%= user != null ? user.getUsername() : "Guest" %>!</h2>
         <nav>
             <ul>
                 <li><a href="addTransaction.jsp">Add Transaction</a></li>

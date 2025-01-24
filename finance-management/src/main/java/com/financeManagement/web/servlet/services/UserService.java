@@ -1,27 +1,29 @@
 package com.financeManagement.web.servlet.services;
 
+import com.financeManagement.web.servlet.exceptions.UserNotFoundException;
 import com.financeManagement.web.servlet.models.User;
 import com.financeManagement.web.servlet.exceptions.UserAlreadyExistsException;
-import com.financeManagement.web.servlet.exceptions.UserNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserService {
-    private static Map<String, User> userDatabase = new HashMap<>();
+    private static Map<String, User> users = new HashMap<>();
 
-    public User authenticate(String username, String password) throws UserNotFoundException {
-        User user = userDatabase.get(username);
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
+    // Register method with validation for existing user
+    public void register(User user) throws UserAlreadyExistsException {
+        if (users.containsKey(user.getUsername())) {
+            throw new UserAlreadyExistsException("Username already exists");
         }
-        throw new UserNotFoundException("Invalid username or password.");
+        users.put(user.getUsername(), user);
     }
 
-    public void register(User user) throws UserAlreadyExistsException {
-        if (userDatabase.containsKey(user.getUsername())) {
-            throw new UserAlreadyExistsException("Username already exists.");
+    // Authenticate method
+    public User authenticate(String username, String password) throws UserNotFoundException {
+        User user = users.get(username);
+        if (user == null || !user.getPassword().equals(password)) {
+            throw new UserNotFoundException("Invalid username or password");
         }
-        userDatabase.put(user.getUsername(), user);
+        return user;
     }
 }
